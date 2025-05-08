@@ -131,7 +131,7 @@
     // If pg is defined, use it; otherwise use the pathname after removing '/redirect' prefix
     const redirectPath = pgPath ?
       (pgPath.startsWith('/') ? pgPath : `/${pgPath}`) :
-      // (window.location.pathname.replace('/redirect', '') || '/');
+      (window.location.pathname.replace('?', '') || '/?');
 
     // Create deep link URL
     function createDeepLink() {
