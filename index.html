@@ -131,19 +131,18 @@
     // If pg is defined, use it; otherwise use the pathname after removing '/redirect' prefix
     const redirectPath = pgPath ?
       (pgPath.startsWith('/') ? pgPath : `/${pgPath}`) :
-      (window.location.pathname.replace('/redirect', '') || '/');
+      // (window.location.pathname.replace('/redirect', '') || '/');
 
     // Create deep link URL
     function createDeepLink() {
       // Build the URI with path and query parameters
-      const uri = `${APP_CONFIG.appScheme}://${APP_CONFIG.appHost}${redirectPath}${window.location.search}`;
-      return uri;
+      return `${APP_CONFIG.appScheme}://${APP_CONFIG.appHost}${window.location.search}`;
     }
 
     // Create store URLs
     const playStoreUrl = `https://play.google.com/store/apps/details?id=${APP_CONFIG.androidPackageName}`;
     const appStoreUrl = `https://apps.apple.com/app/id${APP_CONFIG.iOSAppStoreId}`;
-    const webFallbackUrl = `${APP_CONFIG.webBaseUrl}${redirectPath}${window.location.search}`;
+    const webFallbackUrl = `${APP_CONFIG.webBaseUrl}${window.location.search}`;
 
     // Set href for store links
     document.getElementById('play-store-link').href = playStoreUrl;
